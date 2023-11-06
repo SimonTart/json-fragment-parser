@@ -1,6 +1,11 @@
 import { TokenType } from '../constant';
 import { ParseContext } from '../types';
-import { isEnd } from './utils';
+import { isIndexEnd } from './utils';
+
+export function isNumberStart(context: ParseContext): boolean {
+  const char = context.source[context.index];
+  return Boolean(char.match(/^(-|\d)$/));
+}
 
 export function parsesNegative(context: ParseContext) {
   const { index, source } = context;
@@ -18,7 +23,7 @@ export function parseInteger(context: ParseContext) {
   const { index, source } = context;
   let integer = '';
   let i = index;
-  while (!isEnd(context)) {
+  while (!isIndexEnd(context, i)) {
     if (source[i].match(/^\d$/)) {
       integer += source[i]!;
       i++;
@@ -34,10 +39,10 @@ export function parseFraction(context: ParseContext) {
   const { index, source } = context;
   let fraction = '';
   let i = index;
-  if (!isEnd(context) && source[i] === '.') {
+  if (!isIndexEnd(context, i) && source[i] === '.') {
     i++;
-    while (!isEnd(context)) {
-      if (source[i]!.match(/^\d$/)) {
+    while (!isIndexEnd(context, i)) {
+      if (source[i].match(/^\d$/)) {
         fraction += source[i]!;
         i++;
       } else {
@@ -55,7 +60,7 @@ export function parseExponent(context: ParseContext) {
   let i = index;
   let isExponentNegative = false;
   let exponent = '';
-  if (!isEnd(context) && ['e', 'E'].includes(source[i]!)) {
+  if (!!isIndexEnd(context, i) && ['e', 'E'].includes(source[i]!)) {
     i++;
 
     if (source[i] === '+') {
@@ -65,7 +70,7 @@ export function parseExponent(context: ParseContext) {
       i++;
     }
 
-    while (!isEnd(context)) {
+    while (!isIndexEnd(context, i)) {
       if (source[i]!.match(/^\d$/)) {
         exponent += source[i]!;
         i++;
@@ -95,8 +100,8 @@ export function parseNumber(context: ParseContext) {
       (fraction ? `.${fraction}` : '') +
       (exponent ? `e${isExponentNegative ? '-' : ''}${exponent}` : '')
   );
-  return {
+  context.tokens.push({
     type: TokenType.Number,
     value,
-  };
+  });
 }
