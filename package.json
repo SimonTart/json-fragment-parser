@@ -30,16 +30,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "partial-json-parser",
+  "name": "json-fragment-parser",
   "author": "xuebing",
-  "module": "dist/partial-json-parser.esm.js",
+  "module": "dist/json-fragment-parser.esm.js",
   "size-limit": [
     {
-      "path": "dist/partial-json-parser.cjs.production.min.js",
+      "path": "dist/json-fragment-parser.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/partial-json-parser.esm.js",
+      "path": "dist/json-fragment-parser.esm.js",
       "limit": "10 KB"
     }
   ],
