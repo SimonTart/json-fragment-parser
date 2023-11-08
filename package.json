@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,6 +33,10 @@
   "name": "json-fragment-parser",
   "author": "xuebing",
   "module": "dist/json-fragment-parser.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimonTart/json-fragment-parser"
+  },
   "size-limit": [
     {
       "path": "dist/json-fragment-parser.cjs.production.min.js",

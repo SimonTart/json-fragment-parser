@@ -11,11 +11,11 @@ npm install --save json-fragment-parser
 
 # Usage
 ```js
-import { jsonFragmenParser } from 'json-fragment-parser';
-const objData = jsonFragmenParser('{ title: "hello world", content: "hello ');
+import { jsonParse } from 'json-fragment-parser';
+const objData = jsonParse('{ title: "hello world", content: "hello ');
 // { title: "hello world", content: "hello" }
 
-const arrData = jsonFragmenParser('["apple", "ora');
+const arrData = jsonParse('["apple", "ora');
 // ["apple", "ora"]
 ```
 
