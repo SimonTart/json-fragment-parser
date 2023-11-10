@@ -40,6 +40,8 @@ export function parseString(context: ParseContext) {
         value += String.fromCharCode(parseInt(charHex, 16));
         i += 6;
       } else {
+        // 可能这个时候就结束了，所以先不管，跳过去吧
+        i++;
         console.error(`Unknown escape sequence: "${twoChars}"`);
         // throw new SyntaxError(`Unknown escape sequence: "${twoChars}"`);
       }
