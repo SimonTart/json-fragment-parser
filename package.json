@@ -32,6 +32,7 @@
   },
   "name": "json-fragment-parser",
   "author": "xuebing",
+  "keywords": ["json fragment", "json parser", "json fragment parser", "partial json","partial json parser", "ai", "ai json", "ai json parser", "chatgpt json parser"],
   "module": "dist/json-fragment-parser.esm.js",
   "repository": {
     "type": "git",
